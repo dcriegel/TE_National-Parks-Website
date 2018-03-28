@@ -24,12 +24,22 @@ namespace Capstone.Web.Controllers
             _dal = dal;
         }
 
-
         public ActionResult AllParks()
         {
             IList<Park> parkList = _dal.GetAllParks();
 
             return View("AllParks", parkList);
+        }
+
+        public ActionResult ParkDetail(string parkCode)
+        {
+            if (parkCode.Equals(null))
+            {
+                return Index();
+            }
+
+            var park = _dal.GetPark(parkCode);
+            return View("ParkDetail", park);
         }
 
         // GET: Home

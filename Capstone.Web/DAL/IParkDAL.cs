@@ -9,6 +9,6 @@ namespace Capstone.Web.DAL
     public interface IParkDAL
     {
         IList<Park> GetAllParks();
-        //Park GetPark(string parkCode);
+        Park GetPark(string parkCode);
     }
 }

@@ -1,17 +1,14 @@
-﻿@{
-    Layout = null;
-}
+﻿@using Capstone.Web.Models
 
-<!DOCTYPE html>
+@model Park
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title></title>
-</head>
-<body>
-    <div>
-    
+<div style="width:100%">
+    <div style="margin-top:50px;width:27%;float:left">
+        @{string imagePath = Path.Combine("/Content/",(Model.ParkCode) + ".jpg");}
+        <div>
+            <a href=" @Url.Action("ParkDetail","Home", new { parkCode = Model.ParkCode }, null)">
+                <img src="@imagePath" style="height:300px;width:auto" alt="Picture of Park" />
+            </a>
+        </div>
     </div>
-</body>
-</html>
+</div>
