@@ -1,0 +1,53 @@
+﻿@{
+    ViewBag.Title = "All Listings";
+}
+
+@using Capstone.Web.Models
+
+@model IList<Park>
+
+<div style="margin-top:75px">
+    <h2>@ViewBag.Title:</h2><br />
+
+    @foreach (Park p in Model)
+    {
+    <div style="width:100%">
+        <div style="width:50%">
+            @*<a href=" @Url.Action("ParkDetail", "Home", new { parkCode = p.ParkCode }, null)">*@
+            <img src="/Content/@(p.ParkCode).jpg" style="float:left" />
+            @*</a>*@
+        </div>
+
+        <table style="float:left;width:50%";height:400px>
+            <tr>
+                <th>@p.ParkName<br /></th>
+            </tr>
+            <tr>
+                <td><p>@p.ParkDescription</p></td>
+            </tr>
+        </table>
+    </div>
+    <br />
+    }
+            @*<table style="width:75%">
+                <tr>
+                    <th style="width:60%"><b>Park Name</b></th>
+                    <th style="width:20%"><b>Acreage</b></th>
+                    <th style="width:20%"><b>State</b></th>
+                </tr>
+
+                @foreach (Park p in Model)
+                {
+                    <tr style="border-bottom: 1.5px solid lightgrey">
+
+                        <td><a href="@Url.Action("ParkDetail", "Home", new { parkCode = p.ParkCode }, null)">@p.ParkName</a></td>
+
+                        <td>@p.Acreage</td>
+                        <td>@p.State</td>
+
+                    </tr>
+                }
+
+            </table>*@
+</div>
+

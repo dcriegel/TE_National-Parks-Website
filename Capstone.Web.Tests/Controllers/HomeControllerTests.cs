@@ -12,11 +12,14 @@ namespace Capstone.Web.Controllers.Tests
     [TestClass()]
     public class HomeControllerTests
     {
+        string connectionString;
+
         [TestMethod()]
         public void HomeController_IndexAction_ReturnIndexView()
         {
+           
             //Arrange
-            HomeController controller = new HomeController();
+            HomeController controller = new HomeController(connectionString);
 
             //Act
             ViewResult result = controller.Index() as ViewResult;
