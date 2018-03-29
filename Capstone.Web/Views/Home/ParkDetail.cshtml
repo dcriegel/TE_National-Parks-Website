@@ -2,13 +2,27 @@
 
 @model Park
 
-<div style="width:100%">
-    <div style="margin-top:50px;width:27%;float:left">
+<div style="width:75%">
+    <div style="margin-top:100px;width:30%;float:right">
         @{string imagePath = Path.Combine("/Content/",(Model.ParkCode) + ".jpg");}
         <div>
             <a href=" @Url.Action("ParkDetail","Home", new { parkCode = Model.ParkCode }, null)">
-                <img src="@imagePath" style="height:300px;width:auto" alt="Picture of Park" />
+                <img src="@imagePath" style="height:350px;width:auto" alt="Picture of Park" />
             </a>
         </div>
+    </div>
+    <div style="margin-top:100px;width:68%;height:350px;float:right; padding-left:5%;border:1.5px ridge lightgray">
+        <h2> <b><i>@Model.ParkName</i></b> </h2>
+        <br />
+        <h4 style="text-decoration:underline;font-weight:bold">Quick Stats</h4>
+        <p><b>Located In:</b> @Model.State</p>
+        <p><b>Founded:</b> @Model.YearFounded</p>
+        <p><b>Annual Visitors:</b> @String.Format("{0:n0}", Model.AnnualVisitorCount)</p>
+        <p><b>Total Acreage:</b> @String.Format("{0:n0}", Model.Acreage)</p>
+        <p><b>Average Elevation:</b> @String.Format("{0:n0}", Model.ElevationInFeet) ft.</p>
+        <br />
+        <p><b>Daily Entrance Fee:</b> $@Model.EntryFee</p>
+   
+
     </div>
 </div>

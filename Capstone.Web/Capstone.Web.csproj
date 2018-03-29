@@ -223,6 +223,8 @@
     <Content Include="Views\Survey\Survey.cshtml" />
     <Content Include="Views\Home\ParkDetail.cshtml" />
     <Content Include="Views\Survey\SurveyResult.cshtml" />
+    <Content Include="Views\Weather\Index.cshtml" />
+    <Content Include="Views\Weather\WeatherDetail.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
