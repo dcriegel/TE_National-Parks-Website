@@ -12,6 +12,8 @@ namespace Capstone.Web.Models
         public string EmailAddress { get; set; }
         public string State { get; set; }
         public string ActivityLevel { get; set; }
+        public string ParkName { get; set; }
+        public int ParkVotes { get; set; }
 
     }
 }

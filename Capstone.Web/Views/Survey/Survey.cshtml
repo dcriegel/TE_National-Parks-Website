@@ -2,7 +2,9 @@
 @model Survey
 
 <div style="margin-top:75px">
-    <h1>New Survey:</h1>
+    <h1>Favorite Park Survey Submission:</h1>
+    <h2>Choose your favorite!!</h2>
+    <br />
 
     <form method="post" action="@Url.Action("Survey","Survey")">
         <table>
@@ -12,16 +14,17 @@
                 </td>
                 <td>
                     <select name="ParkCode">
+                        <option value="CVNP"> Cuyahoga Valley National Park </option>
+                        <option value="ENP"> Everglades National Park </option>
                         <option value="GNP"> Glacier National Park </option>
                         <option value="GCNP"> Grand Canyon National Park </option>
                         <option value="GTNP"> Grand Teton National Park </option>
-                        <option value="MRNP"> Mount Ranier National Park </option>
                         <option value="GSMNP"> Great Smokey Mountain National Park </option>
-                        <option value="ENP"> Everglades National Park </option>
+                        <option value="MRNP"> Mount Ranier National Park </option>
+                        <option value="RMNP"> Rocky Mountain National Park </option>
                         <option value="YNP"> Yellowstone National Park </option>
                         <option value="YNP2"> Yosemite National Park </option>
-                        <option value="CVNP"> Cuyahoga Valley National Park </option>
-                        <option value="RMNP"> Rocky Mountain National Park </option>
+                        
                     </select>
                 </td>
             </tr>
