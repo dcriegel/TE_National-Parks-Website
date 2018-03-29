@@ -1,4 +1,59 @@
 ﻿@using Capstone.Web.Models
-@model Survey
+@model List<Survey>
 
-<h2> Thank you </h2>
+<style>
+    .box {
+        display: inline-block;
+        width: 100%;
+        background-color: white;
+        
+        border-radius: 7px;
+        margin-top:75px;
+    }
+
+
+        .box .post:nth-child(even) {
+            background-color: lightgray;
+            padding-bottom:30px;
+        }
+
+    .margin {
+        padding: 10px 10px;
+        
+        
+    }
+    .img{
+        height: 150px;
+        
+        
+    }
+    h2{
+        font-weight: bold;
+        
+    }
+</style>
+
+<div class="box">
+
+    <h2 style="text-align:center"> Thank you for participating in the Favorite Park Survey!!!</h2>
+    <h3 style="text-align:center"> The National Parks are listed by popularity according the the survey.</h3>
+    <hr />
+
+    @foreach (var survey in Model)
+    {
+    <div class="post margin">
+        <table>
+            <tr>
+                <td>
+                    <img class="img" src="/Content/@(survey.ParkCode).jpg" />
+                </td>
+                <td>
+                    <h2 style="font-style:italic; padding-left:25px">@survey.ParkName </h2> <h3 style="padding-left:25px">Has received @survey.ParkVotes vote(s)</h3>
+                </td>
+            </tr>
+            <br />
+        </table>
+    </div>
+    
+    }
+</div>

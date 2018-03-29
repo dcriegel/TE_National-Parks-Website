@@ -23,7 +23,9 @@ namespace Capstone.Web.DAL
             {
                 conn.Open();
 
-                string survey = @"SELECT parkCode, COUNT(parkCode) AS parkVotes FROM survey_result GROUP BY parkCode ORDER BY parkVotes DESC;";
+                string survey = @"SELECT park.parkName, survey_result.parkCode, COUNT(survey_result.parkCode) AS parkVotes FROM survey_result
+                                JOIN park on park.parkCode = survey_result.parkCode GROUP BY survey_result.parkCode, park.parkName ORDER BY parkVotes DESC, parkName ASC;";
+                   
                 SqlCommand cmd = new SqlCommand(survey, conn);
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
@@ -39,11 +41,11 @@ namespace Capstone.Web.DAL
             Survey survey = new Survey()
             {
 
-                SurveyId = Convert.ToInt32(reader["surveyId"]),
+                
                 ParkCode = Convert.ToString(reader["parkCode"]),
-                EmailAddress = Convert.ToString(reader["emailAddress"]),
-                State = Convert.ToString(reader["state"]),
-                ActivityLevel = Convert.ToString(reader["activityLevel"]),
+                ParkName = Convert.ToString(reader["parkName"]),
+                ParkVotes = Convert.ToInt32(reader["parkVotes"])
+                
 
             };
             return survey;
