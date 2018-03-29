@@ -39,7 +39,7 @@ namespace Capstone.Web.DAL
             Survey survey = new Survey()
             {
 
-                SurveyID = Convert.ToInt32(reader["surveyId"]),
+                SurveyId = Convert.ToInt32(reader["surveyId"]),
                 ParkCode = Convert.ToString(reader["parkCode"]),
                 EmailAddress = Convert.ToString(reader["emailAddress"]),
                 State = Convert.ToString(reader["state"]),
@@ -57,7 +57,7 @@ namespace Capstone.Web.DAL
                 conn.Open();
 
                 string survey = @"INSERT INTO survey_result(parkCode, emailAddress, state, activityLevel)
-                                VALUES(@parkCode, @emailAddress, @state, @activityLevel)";
+                                VALUES(@parkCode, @emailAddress, @state, @activityLevel) SELECT CAST(SCOPE_IDENTITY() AS INT)";
 
                 SqlCommand cmd = new SqlCommand(survey, conn);
                 
@@ -65,7 +65,9 @@ namespace Capstone.Web.DAL
                 cmd.Parameters.AddWithValue("@emailAddress", newSurvey.EmailAddress);
                 cmd.Parameters.AddWithValue("@state", newSurvey.State);
                 cmd.Parameters.AddWithValue("@activityLevel", newSurvey.ActivityLevel);
-                cmd.ExecuteScalar();
+
+                int newId = (int)cmd.ExecuteScalar();
+                sPost.SurveyId = newId;
 
             }
             return true;

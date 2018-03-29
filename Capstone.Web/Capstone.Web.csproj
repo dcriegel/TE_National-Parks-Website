@@ -198,6 +198,7 @@
     </Compile>
     <Compile Include="Models\Park.cs" />
     <Compile Include="Models\Survey.cs" />
+    <Compile Include="Models\SurveyResult.cs" />
     <Compile Include="Models\Weather.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -219,9 +220,9 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\AllParks.cshtml" />
-    <Content Include="Views\Home\Survey.cshtml" />
+    <Content Include="Views\Survey\Survey.cshtml" />
     <Content Include="Views\Home\ParkDetail.cshtml" />
-    <Content Include="Views\Home\SurveyResult.cshtml" />
+    <Content Include="Views\Survey\SurveyResult.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
