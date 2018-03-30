@@ -48,6 +48,12 @@ namespace Capstone.Web.Controllers
             return View("Index");
         }
 
+        public ActionResult AllParksWeatherList()
+        {
+            IList<Park> parkList = _dal.GetAllParks();
+
+            return View("AllParksWeatherList", parkList);
+        }
 
     }
 }

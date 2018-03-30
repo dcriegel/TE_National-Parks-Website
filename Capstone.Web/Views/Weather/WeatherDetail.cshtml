@@ -1,17 +1,122 @@
 ﻿@{
-    Layout = null;
+    ViewBag.Title = "5-Day Weather Forecast";
 }
 
-<!DOCTYPE html>
+@using Capstone.Web.Models
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title></title>
-</head>
-<body>
-    <div>
-    
-    </div>
-</body>
-</html>
+@model List<Weather>
+<style>
+    .img {
+        height: 50px;
+    }
+    .post:nth-child(even) {
+        background-color: lightgray;
+        
+    }
+    .post{
+        height:75px;
+    }
+    h4{
+        font-weight:bold;
+    }
+
+</style>
+
+
+<div style="margin-top:75px;margin-left:20px;margin-bottom:100px">
+    <h3>@ViewBag.Title</h3><br />
+
+
+
+    <h2>@Model[0].ParkName</h2>
+    <hr />
+
+    <table style="margin-top:35px">
+        <tr>
+            <th style="width:15%">Day of the Week</th>
+            <th style="width:10%; text-align:center">High Temperature</th>
+            <th style="width:10%; text-align:center">Low Temperature</th>
+            <th style="width:10%"></th>
+            <th style="width:25%">Weather Forecast</th>
+            <th style="width:30%">Advisories</th>
+        </tr>
+
+        @foreach (Weather w in Model)
+        {
+
+            <tr class="post">
+                <td>
+                    <h4 style="padding-left: 15px">@DateTime.Now.AddDays(w.FiveDayForecastValue - 1).DayOfWeek</h4>
+                </td>
+                <td>
+                    <p style="text-align:center">@w.HighTemp°</p>
+                </td>
+                <td>
+                    <p style="text-align:center">@w.LowTemp° </p>
+                </td>
+
+                <td>
+                    @if (w.Forecast == "snow")
+                    {
+                        <img class="img" src="/Content/Weather/snow2.png" />
+                    }
+                    @if (w.Forecast == "partly cloudy")
+                    {
+                        <img class="img" src="/Content/Weather/partlyCloudy2.png" />
+                    }
+                    @if (w.Forecast == "cloudy")
+                    {
+                        <img class="img" src="/Content/Weather/cloudy2.png" />
+                    }
+                    @if (w.Forecast == "rain")
+                    {
+                        <img class="img" src="/Content/Weather/rain2.png" />
+                    }
+                    @if (w.Forecast == "thunderstorms")
+                    {
+                        <img class="img" src="/Content/Weather/thunderstorms2.png" />
+                    }
+                    @if (w.Forecast == "sunny")
+                    {
+                        <img class="img" src="/Content/Weather/sunny2.png" />
+                    }
+                </td>
+                <td>
+                    <p>The forecast for today is @w.Forecast.</p>
+                </td>
+                <td>
+                    @if (w.Forecast == "snow")
+                    {
+                        <p> - Remember to pack snowshoes. </p>
+                    }
+                    @if (w.Forecast == "rain")
+                    {
+                        <p> - Remember to pack raingear and wear waterproof shoes. </p>
+                    }
+                    @if (w.Forecast == "thunderstorms")
+                    {
+                        <p> - Seek shelter! Avoid hiking on exposed ridges. </p>
+                    }
+                    @if (w.Forecast == "sunny")
+                    {
+                        <p> - Remember to pack sunblock. </p>
+                    }
+                    @if (w.HighTemp >= 75)
+                    {
+                        <p> - Remember to bring an extra gallon of water. </p>
+                    }
+                    @if ((w.HighTemp - w.LowTemp) > 20)
+                    {
+                        <p> - Temperatures will fluctuate, wear breathable layers. </p>
+                    }
+                    @if (w.LowTemp < 20)
+                    {
+                        <p> - Danger!! Exposure to frigid temperatures can be deadly. </p>
+                    }
+                </td>
+            </tr>
+
+        }
+    </table>
+
+</div>

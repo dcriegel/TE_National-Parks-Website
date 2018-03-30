@@ -35,7 +35,9 @@
                 <p><b>Miles of Trails:</b> @String.Format("{0:n0}", Model.MilesOfTrail)</p>
             </div>
             <div style="float:left;width:150px">
+                <a href=" @Url.Action("WeatherDetail", "Weather", new { parkCode = Model.ParkCode }, null)">
                 <p style="color:forestgreen"><b>Five-Day Weather Forecast for @Model.ParkName</b></p>
+                </a>
             </div>
             <div style="float:left;padding-left:14%;padding-right:8%">
                 <h4 style="text-decoration:underline;font-weight:bold">Climate & Ecology</h4>

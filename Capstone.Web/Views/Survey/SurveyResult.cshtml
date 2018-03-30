@@ -9,6 +9,7 @@
         
         border-radius: 7px;
         margin-top:75px;
+        margin-bottom:100px;
     }
 
 
@@ -45,7 +46,9 @@
         <table>
             <tr>
                 <td>
-                    <img class="img" src="/Content/@(survey.ParkCode).jpg" />
+                    <a href=" @Url.Action("ParkDetail", "Home", new { parkCode = survey.ParkCode }, null)">
+                        <img class="img" src="/Content/@(survey.ParkCode).jpg" />
+                    </a>
                 </td>
                 <td>
                     <h2 style="font-style:italic; padding-left:25px">@survey.ParkName </h2> <h3 style="padding-left:25px">Has received @survey.ParkVotes vote(s)</h3>

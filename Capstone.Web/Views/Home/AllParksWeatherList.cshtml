@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "Choose a Park to View the 5-Day Forecast:";
+}
+
+@using Capstone.Web.Models
+
+@model IList<Park>
+
+<div style="margin-top:75px;margin-left:20px">
+    <h3>@ViewBag.Title</h3><br />
+
+    <ul>
+        @foreach (Park p in Model)
+        {
+
+                <li><a href=" @Url.Action("WeatherDetail", "Weather", new { parkCode = p.ParkCode }, null)">@p.ParkName</a></li>
+        }
+    </ul>
+</div>
