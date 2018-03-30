@@ -9,24 +9,33 @@
     .img {
         height: 50px;
     }
+
     .post:nth-child(even) {
         background-color: lightgray;
-        
-    }
-    .post{
-        height:75px;
-    }
-    h4{
-        font-weight:bold;
     }
 
+    .post {
+        height: 75px;
+    }
+
+    h4 {
+        font-weight: bold;
+    }
 </style>
 
 
 <div style="margin-top:75px;margin-left:20px;margin-bottom:100px">
     <h3>@ViewBag.Title</h3><br />
 
-
+    <form method="post" action="@Url.Action("isFahrenheit","Weather")">
+        <select name="isFahrenheit">
+            <option value=@Session["isFahrenheit"]> Select Temperature Type </option>
+            <option value="True" > Fahrenheit </option>
+            <option value="False"> Celcius </option>
+        </select>
+        <input type="submit" value="Submit" />
+        <input type="hidden" name ="parkCode" value="@Model[0].ParkCode" />
+    </form>
 
     <h2>@Model[0].ParkName</h2>
     <hr />
@@ -49,10 +58,24 @@
                     <h4 style="padding-left: 15px">@DateTime.Now.AddDays(w.FiveDayForecastValue - 1).DayOfWeek</h4>
                 </td>
                 <td>
-                    <p style="text-align:center">@w.HighTemp°</p>
+                    @if (Session["isFahrenheit"].ToString() == "True")
+                    {
+                        <p style="text-align:center">@w.HighTempF°F</p>
+                    }
+                    @if (Session["isFahrenheit"].ToString() == "False")
+                    {
+                        <p style="text-align:center">@Math.Round(w.HighTempC,0)°C</p>
+                    }
                 </td>
                 <td>
-                    <p style="text-align:center">@w.LowTemp° </p>
+                    @if (Session["isFahrenheit"].ToString() == "True")
+                    {
+                        <p style="text-align:center">@w.LowTempF°F</p>
+                    }
+                    @if (Session["isFahrenheit"].ToString() == "False")
+                    {
+                        <p style="text-align:center">@Math.Round(w.LowTempC,0)°C</p>
+                    }
                 </td>
 
                 <td>
@@ -101,15 +124,15 @@
                     {
                         <p> - Remember to pack sunblock. </p>
                     }
-                    @if (w.HighTemp >= 75)
+                    @if (w.HighTempF >= 75)
                     {
                         <p> - Remember to bring an extra gallon of water. </p>
                     }
-                    @if ((w.HighTemp - w.LowTemp) > 20)
+                    @if ((w.HighTempF - w.LowTempF) > 20)
                     {
                         <p> - Temperatures will fluctuate, wear breathable layers. </p>
                     }
-                    @if (w.LowTemp < 20)
+                    @if (w.LowTempF < 20)
                     {
                         <p> - Danger!! Exposure to frigid temperatures can be deadly. </p>
                     }

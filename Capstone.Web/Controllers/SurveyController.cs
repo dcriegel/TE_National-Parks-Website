@@ -10,6 +10,7 @@ namespace Capstone.Web.Controllers
 {
     public class SurveyController : Controller
     {
+        
 
         private ISurveyDAL _dal;
         public SurveyController(ISurveyDAL dal)
@@ -19,6 +20,11 @@ namespace Capstone.Web.Controllers
 
         public ActionResult SurveyResult()
         {
+            if (Session["isFahrenheit"] == null)
+            {
+                Session["isFahrenheit"] = "True";
+            }
+
             return View(_dal.GetAllSurveys());
         }
 
@@ -31,6 +37,11 @@ namespace Capstone.Web.Controllers
 
         public ActionResult Survey()
         {
+            if (Session["isFahrenheit"] == null)
+            {
+                Session["isFahrenheit"] = "True";
+            }
+
             return View();
         }
 
