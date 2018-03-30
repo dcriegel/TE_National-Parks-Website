@@ -134,10 +134,13 @@
     <Content Include="Content\gnp.jpg" />
     <Content Include="Content\gsmnp.jpg" />
     <Content Include="Content\gtnp.jpg" />
+    <Content Include="Content\homepage.jpg" />
+    <Content Include="Content\logo.png" />
     <Content Include="Content\mrnp.jpg" />
     <Content Include="Content\rmnp.jpg" />
     <Content Include="Content\Weather\cloudy.png" />
     <Content Include="Content\Weather\cloudy2.png" />
+    <Content Include="Content\Weather\geekdsfwrsg.png" />
     <Content Include="Content\Weather\partlyCloudy.png" />
     <Content Include="Content\Weather\partlyCloudy2.png" />
     <Content Include="Content\Weather\rain.png" />
