@@ -2,19 +2,25 @@
 
 @model Park
 
-<div style="width:75%;margin-bottom:75px">
-    <div style="margin-top:100px;width:30%;float:right">
+<head>
+
+    <link href="~/Content/CSS/parkdetail.css" rel="stylesheet" />
+
+</head>
+
+<div class="main">
+    <div class="imgcontainer">
         @{string imagePath = Path.Combine("/Content/", (Model.ParkCode) + ".jpg");}
         <div>
-            <a href=" @Url.Action("ParkDetail","Home", new { parkCode = Model.ParkCode }, null)">
-                <img src="@imagePath" style="height:350px;width:524px;border: 1.5px solid darkgreen;border-left:none" alt="Picture of Park" />
+            <a href="@Url.Action("ParkDetail","Home", new { parkCode = Model.ParkCode }, null)">
+                <img src="@imagePath" class="img" alt="Picture of Park" />
             </a>
         </div>
     </div>
-    <div style="margin-top:100px;width:68%;height:350px;float:right; padding-left:5%;border:1.5px solid darkgreen">
-        <h2> <b><i>@Model.ParkName</i></b> </h2>
+    <div class="leftbox">
+        <h2 class="parkname">@Model.ParkName</h2>
         <br />
-        <h4 style="text-decoration:underline;font-weight:bold">Quick Stats</h4>
+        <h4 class="subhead">Quick Stats</h4>
         <p><b>Located In:</b> @Model.State</p>
         <p><b>Founded:</b> @Model.YearFounded</p>
         <p><b>Annual Visitors:</b> @String.Format("{0:n0}", Model.AnnualVisitorCount)</p>
@@ -23,28 +29,27 @@
         <br />
         <p><b>Daily Entrance Fee:</b> $@Model.EntryFee</p>
     </div>
-    <div style="border:1.5px solid darkgreen;border-top:none;float:left;width:1105.5px;margin-left:17px;margin-top:-1px;margin-bottom:75px;padding-left:5%;padding-top:25px;padding-right:5%;padding-bottom:35px">
-        <p style="text-align:center"><i>"@Model.InspirationalQuote" - @Model.InspirationalQuoteSource</i></p><hr />
-        <h5 style="font-weight:bold">Description: <span style="font-weight:400;font-size:small;text-decoration:none">@Model.ParkDescription</span></h5>
+    <div class="bottom_main">
+        <p class="quote">"@Model.InspirationalQuote" - @Model.InspirationalQuoteSource</p><hr />
+        <h5><b>Description:</b> <span class="description">@Model.ParkDescription</span></h5>
         <br />
 
         <div>
-            <div style="float:left;padding-left:8%;padding-right:14%">
-                <h4 style="text-decoration:underline;font-weight:bold">Camping & Hiking</h4>
+            <div class="bottom_left">
+                <h4 class="subhead">Camping & Hiking</h4>
                 <p><b>Number of Campsites:</b> @Model.NumberOfCampsites</p>
                 <p><b>Miles of Trails:</b> @String.Format("{0:n0}", Model.MilesOfTrail)</p>
             </div>
-            <div style="float:left;width:150px">
+            <div class="bottom_center">
                 <a href=" @Url.Action("WeatherDetail", "Weather", new { parkCode = Model.ParkCode }, null)">
                 <p style="color:forestgreen"><b>Five-Day Weather Forecast for @Model.ParkName</b></p>
                 </a>
             </div>
-            <div style="float:left;padding-left:14%;padding-right:8%">
-                <h4 style="text-decoration:underline;font-weight:bold">Climate & Ecology</h4>
+            <div class="bottom_right">
+                <h4 class="subhead">Climate & Ecology</h4>
                 <p><b>Climate Zone:</b> @Model.Climate</p>
                 <p><b>Number of Animal Species:</b> @Model.NumberOfAnimalSpecies</p>
             </div>
         </div>
-
     </div>
 </div>

@@ -5,42 +5,29 @@
 @using Capstone.Web.Models
 
 @model List<Weather>
-<style>
-    .img {
-        height: 50px;
-    }
 
-    .post:nth-child(even) {
-        background-color: lightgray;
-    }
+<head>
 
-    .post {
-        height: 75px;
-    }
+    <link href="~/Content/CSS/weatherdetail.css" rel="stylesheet" />
 
-    h4 {
-        font-weight: bold;
-    }
-</style>
+</head>
 
-
-<div style="margin-top:75px;margin-left:20px;margin-bottom:100px">
+<div class="main">
     <h3>@ViewBag.Title</h3><br />
 
     <form method="post" action="@Url.Action("isFahrenheit","Weather")">
         <select name="isFahrenheit">
             <option value=@Session["isFahrenheit"]> Select Temperature Type </option>
-            <option value="True" > Fahrenheit </option>
-            <option value="False"> Celcius </option>
+            <option value="True"> Fahrenheit </option>
+            <option value="False"> Celsius </option>
         </select>
         <input type="submit" value="Submit" />
-        <input type="hidden" name ="parkCode" value="@Model[0].ParkCode" />
+        <input type="hidden" name="parkCode" value="@Model[0].ParkCode" />
     </form>
 
     <h2>@Model[0].ParkName</h2>
-    <hr />
 
-    <table style="margin-top:35px">
+    <table style="margin-top: 35px">
         <tr>
             <th style="width:15%">Day of the Week</th>
             <th style="width:10%; text-align:center">High Temperature</th>
@@ -52,29 +39,28 @@
 
         @foreach (Weather w in Model)
         {
-
             <tr class="post">
                 <td>
-                    <h4 style="padding-left: 15px">@DateTime.Now.AddDays(w.FiveDayForecastValue - 1).DayOfWeek</h4>
+                    <h4>@DateTime.Now.AddDays(w.FiveDayForecastValue - 1).DayOfWeek</h4>
                 </td>
                 <td>
                     @if (Session["isFahrenheit"].ToString() == "True")
                     {
-                        <p style="text-align:center">@w.HighTempF°F</p>
+                        <p class="col">@w.HighTempF°F</p>
                     }
                     @if (Session["isFahrenheit"].ToString() == "False")
                     {
-                        <p style="text-align:center">@Math.Round(w.HighTempC,0)°C</p>
+                        <p class="col">@Math.Round(w.HighTempC, 0)°C</p>
                     }
                 </td>
                 <td>
                     @if (Session["isFahrenheit"].ToString() == "True")
                     {
-                        <p style="text-align:center">@w.LowTempF°F</p>
+                        <p class="col">@w.LowTempF°F</p>
                     }
                     @if (Session["isFahrenheit"].ToString() == "False")
                     {
-                        <p style="text-align:center">@Math.Round(w.LowTempC,0)°C</p>
+                        <p class="col">@Math.Round(w.LowTempC, 0)°C</p>
                     }
                 </td>
 
@@ -138,8 +124,6 @@
                     }
                 </td>
             </tr>
-
         }
     </table>
-
 </div>

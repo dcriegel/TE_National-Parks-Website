@@ -1,24 +1,30 @@
 ﻿@{
-    ViewBag.Title = "Park List";
+    ViewBag.Title = "Top 10 List of National Parks";
 }
 
 @using Capstone.Web.Models
 
 @model IList<Park>
 
-<div style="margin-top:75px">
+<head>
+
+    <link href="~/Content/CSS/parklistpage.css" rel="stylesheet" />
+
+</head>
+
+<div class="main">
     <h2>@ViewBag.Title</h2><br />
 
     @foreach (Park p in Model)
     {
-        <div style="width:100%;height:360px">
-            <div style="width:45%;height:360px;float:left">
+        <div class="row">
+            <div class="img">
                 <a href=" @Url.Action("ParkDetail", "Home", new { parkCode = p.ParkCode }, null)">
                 <img src="/Content/@(p.ParkCode).jpg" />
                 </a>
             </div><br />
 
-            <div style="float:left;width:50%";height:360px>
+            <div class="text">
                 <table>
                     <tr>
                         <th><a href=" @Url.Action("ParkDetail", "Home", new { parkCode = p.ParkCode }, null)">@p.ParkName</a><br /><br /></th>
