@@ -154,6 +154,7 @@
     <Content Include="Content\Weather\partlyCloudy2.png" />
     <Content Include="Content\Weather\rain.png" />
     <Content Include="Content\Weather\rain2.png" />
+    <Content Include="Content\Weather\scenery.png" />
     <Content Include="Content\Weather\snow.png" />
     <Content Include="Content\Weather\snow2.png" />
     <Content Include="Content\Weather\sunny.png" />

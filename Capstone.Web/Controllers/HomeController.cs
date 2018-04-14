@@ -11,15 +11,6 @@ namespace Capstone.Web.Controllers
     public class HomeController : Controller
     {
 
-        
-
-        private string connectionString;
-
-        public HomeController(string connectionString)
-        {
-            this.connectionString = connectionString;
-        }
-
         private IParkDAL _dal;
 
         public HomeController(IParkDAL dal)
@@ -48,22 +39,12 @@ namespace Capstone.Web.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            if (Session["isFahrenheit"] == null)
-            {
-                Session["isFahrenheit"] = "True";
-            }
-
             return View("Index");
         }
 
         public ActionResult AllParksWeatherList()
         {
             IList<Park> parkList = _dal.GetAllParks();
-
-            if (Session["isFahrenheit"] == null)
-            {
-                Session["isFahrenheit"] = "True";
-            }
 
             return View("AllParksWeatherList", parkList);
         }

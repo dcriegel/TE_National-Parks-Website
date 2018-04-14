@@ -1,7 +1,11 @@
 ﻿@{
     ViewBag.Title = "5-Day Weather Forecast";
-}
 
+    if (Session["isFahrenheit"] == null)
+    {
+        Session["isFahrenheit"] = "True";
+    }
+}
 @using Capstone.Web.Models
 
 @model List<Weather>
@@ -44,11 +48,11 @@
                     <h4>@DateTime.Now.AddDays(w.FiveDayForecastValue - 1).DayOfWeek</h4>
                 </td>
                 <td>
-                    @if (Session["isFahrenheit"].ToString() == "True")
+                    @if (Session["isFahrenheit"] == null || Session["isFahrenheit"].ToString() == "True")
                     {
                         <p class="col">@w.HighTempF°F</p>
                     }
-                    @if (Session["isFahrenheit"].ToString() == "False")
+                    else
                     {
                         <p class="col">@Math.Round(w.HighTempC, 0)°C</p>
                     }

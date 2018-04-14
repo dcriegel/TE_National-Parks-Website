@@ -58,6 +58,5 @@ namespace Capstone.Web.DAL
             return convertWeather;
         }
 
-      
     }
 }

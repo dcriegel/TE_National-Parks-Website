@@ -49,10 +49,6 @@ namespace Capstone.Web.DAL
                         EntryFee = Convert.ToInt32(r["entryFee"]),
                         NumberOfAnimalSpecies = Convert.ToInt32(r["numberOfAnimalSpecies"]),
 
-                        //FiveDayForecastValue = Convert.ToInt32(r["fiveDayForecastValue"]),
-                        //LowTemp = Convert.ToInt32(r["low"]),
-                        //HighTemp = Convert.ToInt32(r["high"]),
-                        //Forecast = Convert.ToString(r["forecast"])
                     };
 
                     list.Add(p);
